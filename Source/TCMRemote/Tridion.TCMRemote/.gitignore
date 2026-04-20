@@ -1,0 +1,6 @@
+# Local Pester test overrides — never commit, contains server-specific credentials
+TCMRemote.PesterSetup.Debug.ps1
+
+# Build outputs
+bin/
+obj/

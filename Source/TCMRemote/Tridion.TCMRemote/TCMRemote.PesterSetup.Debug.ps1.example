@@ -1,0 +1,23 @@
+#
+# TCMRemote.PesterSetup.Debug.ps1.example
+#
+# Copy this file to TCMRemote.PesterSetup.Debug.ps1 and fill in your values.
+# TCMRemote.PesterSetup.Debug.ps1 is gitignored — never commit it.
+#
+# Variables here override defaults set in TCMRemote.PesterSetup.ps1.
+#
+
+# Server base URL
+$tcmBaseUrl = 'http://sites.tridiondemo.com'
+
+# Client Credentials for unattended / CI testing (leave empty to use browser login)
+# $tcmClientId     = 'my-service-account-client-id'
+# $tcmClientSecret = 'my-service-account-client-secret'
+
+# Override Access Management URL if auto-discovery fails
+# $tcmAccessManagementUrl = 'http://sites.tridiondemo.com/auth'
+
+# Known item IDs — override if your server has different content
+# $tcmPublicationId_Master      = 'tcm:0-2-1'
+# $tcmPublicationId_ExampleSite = 'tcm:0-5-1'
+# $tcmItemId_HomeStructureGroup = 'tcm:2-5-4'

@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.Objects.Public.TcmSession
+         New-TcmSession / Get-TcmSession
+         ================================================================ -->
+    <View>
+      <Name>TcmSession</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.Objects.Public.TcmSession</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>BaseUrl</Label><Width>50</Width></TableColumnHeader>
+          <TableColumnHeader><Label>AuthenticationType</Label><Width>20</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Name</Label><Width>20</Width></TableColumnHeader>
+          <TableColumnHeader><Label>CreatedAt</Label><Width>24</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>BaseUrl</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>AuthenticationType</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Name</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>CreatedAt</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.OpenApiTCM30.IdentifiableObject
+         Get-TcmItem / New-TcmItem / Set-TcmItem / Find-TcmItem /
+         Get-TcmItemUses / Get-TcmItemUsedBy
+         ================================================================ -->
+    <View>
+      <Name>IdentifiableObject</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.OpenApiTCM30.IdentifiableObject</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>Id</Label><Width>36</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Title</Label><Width>50</Width></TableColumnHeader>
+          <TableColumnHeader><Label>IsEditable</Label><Width>10</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>Id</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Title</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>IsEditable</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.OpenApiTCM30.RepositoryLocalObject
+         Copy-TcmItem / Move-TcmItem / Get-TcmItemsInContainer
+         ================================================================ -->
+    <View>
+      <Name>RepositoryLocalObject</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.OpenApiTCM30.RepositoryLocalObject</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>Id</Label><Width>36</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Title</Label><Width>44</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Locale</Label><Width>8</Width></TableColumnHeader>
+          <TableColumnHeader><Label>IsEditable</Label><Width>10</Width></TableColumnHeader>
+          <TableColumnHeader><Label>LockType</Label><Width>18</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>Id</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Title</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Locale</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>IsEditable</PropertyName></TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.LockInfo.LockType</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.OpenApiTCM30.VersionedItem
+         Get-TcmItemHistory / Invoke-TcmCheckIn / Invoke-TcmCheckOut /
+         Undo-TcmCheckOut
+         ================================================================ -->
+    <View>
+      <Name>VersionedItem</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.OpenApiTCM30.VersionedItem</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>Id</Label><Width>36</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Title</Label><Width>40</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Version</Label><Width>8</Width></TableColumnHeader>
+          <TableColumnHeader><Label>CheckedOut</Label><Width>10</Width></TableColumnHeader>
+          <TableColumnHeader><Label>LockType</Label><Width>18</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>Id</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Title</PropertyName></TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.VersionInfo.Version</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.VersionInfo.IsCheckedOut</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.LockInfo.LockType</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.OpenApiTCM30.UserProfile
+         Get-TcmCurrentUser
+         ================================================================ -->
+    <View>
+      <Name>UserProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.OpenApiTCM30.UserProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>DisplayName</Label><Width>30</Width></TableColumnHeader>
+          <TableColumnHeader><Label>UserId</Label><Width>36</Width></TableColumnHeader>
+          <TableColumnHeader><Label>IsEnabled</Label><Width>10</Width></TableColumnHeader>
+          <TableColumnHeader><Label>LanguageId</Label><Width>12</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>DisplayName</PropertyName></TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.User.Id</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.User.IsEnabled</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.User.LanguageId</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.OpenApiTCM30.User
+         Get-TcmUser / New-TcmUser / Set-TcmUser /
+         Disable-TcmUser / Enable-TcmUser
+         ================================================================ -->
+    <View>
+      <Name>User</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.OpenApiTCM30.User</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>Id</Label><Width>36</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Title</Label><Width>30</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Description</Label><Width>30</Width></TableColumnHeader>
+          <TableColumnHeader><Label>IsEnabled</Label><Width>10</Width></TableColumnHeader>
+          <TableColumnHeader><Label>IsPredefined</Label><Width>12</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>Id</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Title</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Description</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>IsEnabled</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>IsPredefined</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.OpenApiTCM30.Group
+         Get-TcmGroup / New-TcmGroup
+         ================================================================ -->
+    <View>
+      <Name>Group</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.OpenApiTCM30.Group</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>Id</Label><Width>36</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Title</Label><Width>34</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Description</Label><Width>34</Width></TableColumnHeader>
+          <TableColumnHeader><Label>IsPredefined</Label><Width>12</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>Id</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Title</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Description</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>IsPredefined</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.OpenApiTCM30.Publication
+         Get-TcmPublication / Get-TcmPublications / New-TcmPublication
+         ================================================================ -->
+    <View>
+      <Name>Publication</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.OpenApiTCM30.Publication</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>Id</Label><Width>20</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Title</Label><Width>36</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Key</Label><Width>20</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Locale</Label><Width>8</Width></TableColumnHeader>
+          <TableColumnHeader><Label>PublicationUrl</Label><Width>36</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>Id</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Title</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Key</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Locale</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>PublicationUrl</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.OpenApiTCM30.TargetType
+         Get-TcmPublicationTarget
+         ================================================================ -->
+    <View>
+      <Name>TargetType</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.OpenApiTCM30.TargetType</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>Id</Label><Width>36</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Title</Label><Width>34</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Purpose</Label><Width>16</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Priority</Label><Width>10</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>Id</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Title</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Purpose</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Priority</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.OpenApiTCM30.PublishTransactionsCreationResult
+         Publish-TcmItem / Unpublish-TcmItem
+         ================================================================ -->
+    <View>
+      <Name>PublishTransactionsCreationResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.OpenApiTCM30.PublishTransactionsCreationResult</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>PublishTransactionIds</Label>
+                <ScriptBlock>$_.PublishTransactionIds -join ', '</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.OpenApiTCM30.PublishTransaction
+         Get-TcmPublishTransaction
+         ================================================================ -->
+    <View>
+      <Name>PublishTransaction</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.OpenApiTCM30.PublishTransaction</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>Id</Label><Width>20</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Title</Label><Width>30</Width></TableColumnHeader>
+          <TableColumnHeader><Label>State</Label><Width>18</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Priority</Label><Width>10</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Target</Label><Width>24</Width></TableColumnHeader>
+          <TableColumnHeader><Label>StateChangeDateTime</Label><Width>26</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>Id</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Title</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>State</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Priority</PropertyName></TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.TargetType.Title</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem><PropertyName>StateChangeDateTime</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.OpenApiTCM30.ActivityInstance
+         Get-TcmActivityInstance
+         ================================================================ -->
+    <View>
+      <Name>ActivityInstance</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.OpenApiTCM30.ActivityInstance</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>Id</Label><Width>20</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Title</Label><Width>30</Width></TableColumnHeader>
+          <TableColumnHeader><Label>ActivityState</Label><Width>18</Width></TableColumnHeader>
+          <TableColumnHeader><Label>Assignee</Label><Width>26</Width></TableColumnHeader>
+          <TableColumnHeader><Label>DueDate</Label><Width>24</Width></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>Id</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Title</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>ActivityState</PropertyName></TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Assignee.Title</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem><PropertyName>DueDate</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <!-- ================================================================
+         Tridion.TCMRemote.OpenApiTCM30.Settings
+         Get-TcmApplicationSettings
+         ================================================================ -->
+    <View>
+      <Name>Settings</Name>
+      <ViewSelectedBy>
+        <TypeName>Tridion.TCMRemote.OpenApiTCM30.Settings</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Data</Label>
+                <ScriptBlock>$_.Data | ConvertTo-Json -Depth 5 -Compress</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+
+  </ViewDefinitions>
+</Configuration>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36511.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tridion.TCMRemote", "Tridion.TCMRemote\Tridion.TCMRemote.csproj", "{108EE988-70F9-8260-4F10-152D9B2E0B00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tridion.TCMRemote.OpenApiTCM30", "Tridion.TCMRemote.OpenApiTCM30\Tridion.TCMRemote.OpenApiTCM30.csproj", "{C7DFFF43-B040-57DE-F32A-25EE13FDB28B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{108EE988-70F9-8260-4F10-152D9B2E0B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{108EE988-70F9-8260-4F10-152D9B2E0B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{108EE988-70F9-8260-4F10-152D9B2E0B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{108EE988-70F9-8260-4F10-152D9B2E0B00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7DFFF43-B040-57DE-F32A-25EE13FDB28B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7DFFF43-B040-57DE-F32A-25EE13FDB28B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7DFFF43-B040-57DE-F32A-25EE13FDB28B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7DFFF43-B040-57DE-F32A-25EE13FDB28B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E54AFE0-6A69-4E82-8032-F708DE8CBDBA}
+	EndGlobalSection
+EndGlobal

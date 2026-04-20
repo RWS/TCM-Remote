@@ -1,0 +1,69 @@
+<Project>
+  <!-- Force CI/GithubAction on 20250801 -->
+
+  <PropertyGroup>
+    <ProductName>TCMRemote</ProductName>
+    <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
+    <RepositoryUrl>https://github.com/RWS/$(ProductName)</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <!-- .NET Local and Continuous Integration Package and Assembly properties -->
+  <PropertyGroup>
+    <VersionMajor>1</VersionMajor>
+    <VersionMinor>0</VersionMinor>
+    <VersionPatch>0</VersionPatch>
+    <VersionBuild>$([MSBuild]::Add($([MSBuild]::Multiply(1200, $([MSBuild]::Subtract($([System.DateTime]::UtcNow.Year), 2015)))), $([MSBuild]::Add($([MSBuild]::Multiply(100, $([System.DateTime]::UtcNow.Month))),$([System.DateTime]::UtcNow.Day)))))</VersionBuild>
+    <VersionSuffix Condition="'$(TCMGITHUB_RUN_NUMBER)' == ''">localpreview-$(VersionMajor).0</VersionSuffix>
+    <VersionSuffix Condition="'$(TCMGITHUB_RUN_NUMBER)' != ''">cipreview-$(VersionMajor).$(TCMGITHUB_RUN_NUMBER)</VersionSuffix>
+
+    <AssemblyVersion>$(VersionMajor).0.0.0</AssemblyVersion>
+    <FileVersion Condition="'$(TCMGITHUB_RUN_NUMBER)' == ''">$(VersionMajor).$(VersionMinor).$(VersionBuild).0</FileVersion>
+  	<FileVersion Condition="'$(TCMGITHUB_RUN_NUMBER)' != ''">$(VersionMajor).$(VersionMinor).$(VersionBuild).$(TCMGITHUB_RUN_NUMBER)</FileVersion>
+    <InformationalVersion>$(FileVersion)-$(VersionSuffix)</InformationalVersion>
+
+    <PackageVersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</PackageVersionPrefix>
+    <PackageVersionSuffix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</PackageVersionSuffix>
+
+    <Authors>RWS Holdings plc including its subsidiaries and affiliated companies</Authors>
+    <Owners>RWS Holdings plc including its subsidiaries and affiliated companies</Owners>
+    <CompanyName>RWS Holdings plc including its subsidiaries and affiliated companies</CompanyName>
+    <Copyright>Copyright (c) $([System.DateTime]::Now.ToString('yyyy')) RWS Holdings plc including its subsidiaries and affiliated companies. All rights reserved.</Copyright>
+  </PropertyGroup>
+
+  <!-- PowerShell Module properties -->
+  <PropertyGroup>
+    <Major>1</Major>
+    <Minor>0</Minor>
+    <Patch>0</Patch>
+    <Build>$([MSBuild]::Add($([MSBuild]::Multiply(1200, $([MSBuild]::Subtract($([System.DateTime]::UtcNow.Year), 2015)))), $([MSBuild]::Add($([MSBuild]::Multiply(100, $([System.DateTime]::UtcNow.Month))),$([System.DateTime]::UtcNow.Day)))))</Build>
+	  <ModuleVersion>$(Major).$(Minor).$(Patch)</ModuleVersion>
+    <ModuleBuildVersion>$(Major).$(Minor).$(Build).$(Patch)</ModuleBuildVersion>
+    <Prerelease Condition="'$(TCMGITHUB_RUN_NUMBER)' == ''">preview001</Prerelease>
+    <Prerelease Condition="'$(TCMGITHUB_RUN_NUMBER)' != ''">preview$([System.String]::Format('{0:D3}', $([System.UInt16]::Parse($(TCMGITHUB_RUN_NUMBER)))))</Prerelease>
+    <ModuleName>$(ProductName)</ModuleName>
+    <ModuleTitle>Tridion Sites Content Manager $(ProductName)</ModuleTitle>
+    <ModuleDescription>Business automation module on top of Tridion Sites Content Manager (Tridion Sites)</ModuleDescription>
+    <ModuleCompany>RWS Holdings plc including its subsidiaries and affiliated companies</ModuleCompany>
+    <ModuleProduct>Tridion Sites Content Manager $(ProductName)</ModuleProduct>
+    <ModuleGuid>7c4d8f2a-b1e9-4a5c-9f23-0d6e7b8a1c45</ModuleGuid>
+    <MinPowerShellVersion>5.1</MinPowerShellVersion>
+    <MinCLRVersion>4.0</MinCLRVersion>
+    <MinDotNetVersion>4.8</MinDotNetVersion>
+    <DocPortalLink>https://rws.github.io/$(ProductName)/</DocPortalLink>
+    <LicenseUri>https://github.com/rws/$(ProductName)/blob/master/LICENSE.TXT</LicenseUri>
+    <ProjectUri>https://github.com/rws/$(ProductName)/</ProjectUri>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <AnalysisMode>Default</AnalysisMode>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+  
+</Project>

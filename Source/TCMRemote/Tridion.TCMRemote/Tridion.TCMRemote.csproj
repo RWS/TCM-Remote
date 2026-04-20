@@ -1,0 +1,136 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net48;net8.0</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <!-- PowerShell SDK references (framework-specific) -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.1" />
+  </ItemGroup>
+
+  <!-- Authentication: Duende IdentityModel OidcClient (replaces IdentityModel.OidcClient) -->
+  <ItemGroup>
+    <PackageReference Include="Duende.IdentityModel.OidcClient" Version="6.0.0" />
+  </ItemGroup>
+
+  <!-- JSON serialization -->
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="9.0.4" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="9.0.4" />
+  </ItemGroup>
+
+  <!-- .NET Framework 4.8 compatibility shims -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.4" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+    <PackageReference Include="System.Memory" Version="4.5.5" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <!-- Help generation (net48 only - XmlDoc2CmdletDoc only runs under .NET Framework) -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="XmlDoc2CmdletDoc" Version="0.3.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tridion.TCMRemote.OpenApiTCM30\Tridion.TCMRemote.OpenApiTCM30.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Install-TCMRemote.ps1">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="TCMRemote.Format.ps1xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- XmlDoc2CmdletDoc runs only under .NET Framework 4.8 -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+    <XmlDoc2CmdletDocToolPath>net48\XmlDoc2CmdletDoc.dll</XmlDoc2CmdletDocToolPath>
+    <XmlDocToolsPath>net48\XmlDoc2CmdletDoc.dll</XmlDocToolsPath>
+  </PropertyGroup>
+
+  <!-- Move generated MAML help next to module root (generated once from net48 build) -->
+  <Target Name="CopyCmdletDoc" AfterTargets="AfterBuild" Condition="'$(TargetFramework)' == 'net48'">
+    <PropertyGroup>
+      <TCMRemoteDir>$(ProjectDir)bin/$(Configuration)/TCMRemote</TCMRemoteDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(TCMRemoteDir)" Condition="!Exists('$(TCMRemoteDir)')" />
+    <Move SourceFiles="$(TargetPath)-Help.xml" DestinationFolder="$(TCMRemoteDir)" Condition="Exists('$(TargetPath)-Help.xml')" />
+  </Target>
+
+  <!-- Generating Module Manifest only once, driven by the net48 build -->
+  <Target Name="ModuleManifest" AfterTargets="CopyCmdletDoc" Condition="'$(TargetFramework)' == 'net48'">
+    <PropertyGroup>
+      <PwshExe Condition=" '$(PwshExe)'=='' ">"C:\Program Files\PowerShell\7\pwsh.exe"</PwshExe>
+      <PowerShellExe Condition=" '$(PowerShellExe)'=='' ">"%SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe"</PowerShellExe>
+      <TCMRemoteDir>$(ProjectDir)bin/$(Configuration)/TCMRemote</TCMRemoteDir>
+      <TCMRemote48DllFilePath>$(ProjectDir)bin/$(Configuration)/net48/Tridion.TCMRemote.dll</TCMRemote48DllFilePath>
+      <ManifestFilePath>$(TCMRemoteDir)/$(ModuleName).psd1</ManifestFilePath>
+      <RootModuleFileName>$(ModuleName).psm1</RootModuleFileName>
+      <FormatsToProcessFileName>$(ModuleName).Format.ps1xml</FormatsToProcessFileName>
+    </PropertyGroup>
+    <MakeDir Directories="$(TCMRemoteDir)" Condition="!Exists('$(TCMRemoteDir)')" />
+    <!-- Generate PSD1 manifest; inject Prerelease tag in place of empty ReleaseNotes -->
+    <Exec Command="$(PowerShellExe) -NoProfile -NonInteractive -command &quot;Import-Module $(TCMRemote48DllFilePath) -Force;$cmdletsToExport=(Get-Module -Name Tridion.TCMRemote).ExportedCommands.Keys;New-ModuleManifest -Path '$(ManifestFilePath)' -FormatsToProcess '$(FormatsToProcessFileName)' -FunctionsToExport @('Get-TcmAuxSessionState','New-TcmAuxCompletionResult','Register-TcmAuxParameterCompleter','Write-TcmRemoteLog') -RootModule '$(RootModuleFileName)' -ModuleVersion '$(ModuleVersion)' -Guid '$(ModuleGuid)' -Author '$(Authors)' -CompanyName '$(CompanyName)' -Copyright '$(Copyright)' -Description '$(ModuleDescription)' -PowerShellVersion '$(MinPowerShellVersion)' -ClrVersion '$(MinCLRVersion)' -DotNetFrameworkVersion '$(MinDotNetVersion)' -LicenseUri '$(LicenseUri)' -ProjectUri '$(ProjectUri)' -CmdletsToExport @($cmdletsToExport);(Get-Content -Raw -Path '$(ManifestFilePath)').Replace('# ReleaseNotes = ''''','Prerelease = ''$(Prerelease)''') | Set-Content -Path '$(ManifestFilePath)'&quot;" />
+  </Target>
+
+  <!-- Copy all required files into the TCMRemote packaging folder (runs for all target frameworks) -->
+  <Target Name="CopyRequiredFilesToPowerShellModuleFolder" AfterTargets="ModuleManifest">
+    <PropertyGroup>
+      <LocalPSRepoDir>$(ProjectDir)bin/$(Configuration)</LocalPSRepoDir>
+      <TCMRemoteFrameworkDir>$(ProjectDir)bin/$(Configuration)/TCMRemote/$(TargetFramework)</TCMRemoteFrameworkDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <TCMRemoteFiles Include="$(TargetDir)/**/*.*" />
+      <TCMRemoteScriptFiles Include="$(ProjectDir)/Scripts/**/*.*" />
+    </ItemGroup>
+
+    <RemoveDir Directories="$(TCMRemoteFrameworkDir)" Condition="Exists('$(TCMRemoteFrameworkDir)')" />
+    <MakeDir Directories="$(TCMRemoteFrameworkDir)" />
+    <Copy SourceFiles="@(TCMRemoteFiles)" DestinationFiles="@(TCMRemoteFiles->'$(TCMRemoteFrameworkDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <!-- hyphen-gt arrow needs to remain entity gt -->
+    <Copy SourceFiles="@(TCMRemoteScriptFiles)" DestinationFiles="@(TCMRemoteScriptFiles->'$(LocalPSRepoDir)\TCMRemote\Scripts\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <!-- hyphen-gt arrow needs to remain entity gt -->
+    <Copy SourceFiles="$(ProjectDir)TCMRemote.psm1" DestinationFolder="$(ProjectDir)bin/$(Configuration)/TCMRemote" Condition="'$(TargetFramework)' == 'net48'" />
+    <Copy SourceFiles="$(ProjectDir)TCMRemote.Format.ps1xml" DestinationFolder="$(ProjectDir)bin/$(Configuration)/TCMRemote" Condition="'$(TargetFramework)' == 'net48'" />
+  </Target>
+
+  <!-- Build a local .nupkg for testing PSGallery install flow (Release + net48 only) -->
+  <Target Name="GenerateLocalPowerShellModule" AfterTargets="CopyRequiredFilesToPowerShellModuleFolder" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU' AND '$(TargetFramework)' == 'net48'">
+    <PropertyGroup>
+      <LocalPSRepo>$(ProjectDir)bin\$(Configuration)</LocalPSRepo>
+      <TCMRemoteModulePath>$(ProjectDir)bin/$(Configuration)/TCMRemote</TCMRemoteModulePath>
+      <TCMRemoteModuleFileName>$(ProjectDir)bin/$(Configuration)/TCMRemote.$(ModuleVersion)-$(Prerelease).nupkg</TCMRemoteModuleFileName>
+      <NuGetApiKey Condition=" '$(NuGetApiKey)' == ''">$(NUGET_API_KEY)</NuGetApiKey>
+      <NuGetApiKey Condition=" '$(NuGetApiKey)' == ''">AnyStringWillDo</NuGetApiKey>
+    </PropertyGroup>
+
+    <Delete Files="$(TCMRemoteModuleFileName)" Condition="Exists('$(TCMRemoteModuleFileName)')" />
+
+    <Exec Command="pwsh -NonInteractive -command &quot;Register-PSRepository -Name LocalPSRepo -SourceLocation '$(LocalPSRepo)' -ScriptSourceLocation '$(LocalPSRepo)' -InstallationPolicy Trusted&quot;" />
+    <Exec Command="pwsh -NonInteractive -command &quot;Publish-Module -Path '$(TCMRemoteModulePath)' -Repository LocalPsRepo -NuGetApiKey '$(NuGetApiKey)'&quot;" />
+    <Exec Command="pwsh -NonInteractive -command &quot;Unregister-PSRepository -Name LocalPSRepo&quot;" />
+  </Target>
+
+  <PropertyGroup>
+    <!-- Suppress CS1591: Missing XML comment for publicly visible type/member -->
+    <!-- Suppress pre-existing nullable/unused warnings in legacy authentication and helper code -->
+    <NoWarn>1591;8601;8602;8603;8618;8622;8625;0414</NoWarn>
+  </PropertyGroup>
+
+</Project>
