@@ -3,7 +3,7 @@
 **Business automation PowerShell module for Tridion Sites Content Manager (TCM)**
 
 TCMRemote is a binary PowerShell module built on the Tridion Sites REST API.  
-It provides a thin, automation-friendly layer over the Content Manager REST endpoints — inspired by the architecture of [TCMRemote](https://github.com/RWS/TCM-Remote) but purpose-built for **Tridion Sites**.
+It provides a thin, automation-friendly layer over the Content Manager REST endpoints — inspired by the architecture of [ISHRemote](https://github.com/RWS/ISHRemote) but purpose-built for **Tridion Sites**.
 
 > **Current version:** 1.0.0  
 > **Published to:** [PowerShell Gallery](https://www.powershellgallery.com/packages/TCMRemote/)
