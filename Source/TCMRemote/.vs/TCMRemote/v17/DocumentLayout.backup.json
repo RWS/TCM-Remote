@@ -1,13 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCMRemote\\Source\\TCMRemote\\",
+  "WorkspaceRootPath": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCM-Remote\\Source\\TCMRemote\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C7DFFF43-B040-57DE-F32A-25EE13FDB28B}|Tridion.TCMRemote.OpenApiTCM30\\Tridion.TCMRemote.OpenApiTCM30.csproj|c:\\workspace\\tryout\\tridionpowershellmodule\\tcmremote\\source\\tcmremote\\tridion.tcmremote.openapitcm30\\openapitcm30.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{C7DFFF43-B040-57DE-F32A-25EE13FDB28B}|Tridion.TCMRemote.OpenApiTCM30\\Tridion.TCMRemote.OpenApiTCM30.csproj|c:\\workspace\\tryout\\tridionpowershellmodule\\tcm-remote\\source\\tcmremote\\tridion.tcmremote.openapitcm30\\tridion.tcmremote.openapitcm30.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C7DFFF43-B040-57DE-F32A-25EE13FDB28B}|Tridion.TCMRemote.OpenApiTCM30\\Tridion.TCMRemote.OpenApiTCM30.csproj|solutionrelative:tridion.tcmremote.openapitcm30\\tridion.tcmremote.openapitcm30.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7DFFF43-B040-57DE-F32A-25EE13FDB28B}|Tridion.TCMRemote.OpenApiTCM30\\Tridion.TCMRemote.OpenApiTCM30.csproj|c:\\workspace\\tryout\\tridionpowershellmodule\\tcm-remote\\source\\tcmremote\\tridion.tcmremote.openapitcm30\\openapitcm30.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C7DFFF43-B040-57DE-F32A-25EE13FDB28B}|Tridion.TCMRemote.OpenApiTCM30\\Tridion.TCMRemote.OpenApiTCM30.csproj|solutionrelative:tridion.tcmremote.openapitcm30\\openapitcm30.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{108EE988-70F9-8260-4F10-152D9B2E0B00}|Tridion.TCMRemote\\Tridion.TCMRemote.csproj|c:\\workspace\\tryout\\tridionpowershellmodule\\tcmremote\\source\\tcmremote\\tridion.tcmremote\\tridion.tcmremote.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{108EE988-70F9-8260-4F10-152D9B2E0B00}|Tridion.TCMRemote\\Tridion.TCMRemote.csproj|c:\\workspace\\tryout\\tridionpowershellmodule\\tcm-remote\\source\\tcmremote\\tridion.tcmremote\\install-tcmremote.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{108EE988-70F9-8260-4F10-152D9B2E0B00}|Tridion.TCMRemote\\Tridion.TCMRemote.csproj|solutionrelative:tridion.tcmremote\\install-tcmremote.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{108EE988-70F9-8260-4F10-152D9B2E0B00}|Tridion.TCMRemote\\Tridion.TCMRemote.csproj|c:\\workspace\\tryout\\tridionpowershellmodule\\tcm-remote\\source\\tcmremote\\tridion.tcmremote\\tridion.tcmremote.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{108EE988-70F9-8260-4F10-152D9B2E0B00}|Tridion.TCMRemote\\Tridion.TCMRemote.csproj|solutionrelative:tridion.tcmremote\\tridion.tcmremote.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
@@ -30,23 +38,49 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "OpenApiTCM30.json",
-              "DocumentMoniker": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCMRemote\\Source\\TCMRemote\\Tridion.TCMRemote.OpenApiTCM30\\OpenApiTCM30.json",
-              "RelativeDocumentMoniker": "Tridion.TCMRemote.OpenApiTCM30\\OpenApiTCM30.json",
-              "ToolTip": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCMRemote\\Source\\TCMRemote\\Tridion.TCMRemote.OpenApiTCM30\\OpenApiTCM30.json",
-              "RelativeToolTip": "Tridion.TCMRemote.OpenApiTCM30\\OpenApiTCM30.json",
+              "Title": "Tridion.TCMRemote.OpenApiTCM30",
+              "DocumentMoniker": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCM-Remote\\Source\\TCMRemote\\Tridion.TCMRemote.OpenApiTCM30\\Tridion.TCMRemote.OpenApiTCM30.csproj",
+              "RelativeDocumentMoniker": "Tridion.TCMRemote.OpenApiTCM30\\Tridion.TCMRemote.OpenApiTCM30.csproj",
+              "ToolTip": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCM-Remote\\Source\\TCMRemote\\Tridion.TCMRemote.OpenApiTCM30\\Tridion.TCMRemote.OpenApiTCM30.csproj",
+              "RelativeToolTip": "Tridion.TCMRemote.OpenApiTCM30\\Tridion.TCMRemote.OpenApiTCM30.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAC8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-20T09:44:27.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Install-TCMRemote.ps1",
+              "DocumentMoniker": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCM-Remote\\Source\\TCMRemote\\Tridion.TCMRemote\\Install-TCMRemote.ps1",
+              "RelativeDocumentMoniker": "Tridion.TCMRemote\\Install-TCMRemote.ps1",
+              "ToolTip": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCM-Remote\\Source\\TCMRemote\\Tridion.TCMRemote\\Install-TCMRemote.ps1",
+              "RelativeToolTip": "Tridion.TCMRemote\\Install-TCMRemote.ps1",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-04-17T09:54:49.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OpenApiTCM30.json",
+              "DocumentMoniker": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCM-Remote\\Source\\TCMRemote\\Tridion.TCMRemote.OpenApiTCM30\\OpenApiTCM30.json",
+              "RelativeDocumentMoniker": "Tridion.TCMRemote.OpenApiTCM30\\OpenApiTCM30.json",
+              "ToolTip": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCM-Remote\\Source\\TCMRemote\\Tridion.TCMRemote.OpenApiTCM30\\OpenApiTCM30.json",
+              "RelativeToolTip": "Tridion.TCMRemote.OpenApiTCM30\\OpenApiTCM30.json",
+              "ViewState": "AgIAALsMAAAAAAAAAAAqwMMMAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-04-17T09:44:11.592Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Tridion.TCMRemote.csproj",
-              "DocumentMoniker": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCMRemote\\Source\\TCMRemote\\Tridion.TCMRemote\\Tridion.TCMRemote.csproj",
+              "DocumentMoniker": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCM-Remote\\Source\\TCMRemote\\Tridion.TCMRemote\\Tridion.TCMRemote.csproj",
               "RelativeDocumentMoniker": "Tridion.TCMRemote\\Tridion.TCMRemote.csproj",
-              "ToolTip": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCMRemote\\Source\\TCMRemote\\Tridion.TCMRemote\\Tridion.TCMRemote.csproj",
+              "ToolTip": "C:\\Workspace\\Tryout\\TridionPowerShellModule\\TCM-Remote\\Source\\TCMRemote\\Tridion.TCMRemote\\Tridion.TCMRemote.csproj",
               "RelativeToolTip": "Tridion.TCMRemote\\Tridion.TCMRemote.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -55,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Microsoft.NET.TargetFrameworkInference.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.312\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.312\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
@@ -63,8 +97,7 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.312\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
               "ViewState": "AgIAAJgAAAAAAAAAAAAEwKoAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2026-04-17T08:33:56.419Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-17T08:33:56.419Z"
             }
           ]
         }
